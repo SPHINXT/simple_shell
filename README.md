@@ -1,1 +1,4 @@
-creating a simple shell
+Creating a Simple Shell
+-----------------------
+
+Group project by : George & Sphinxt
