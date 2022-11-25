@@ -1,28 +1,21 @@
 #include "main.h"
 
+int (*inbuiltFunctions[])(char **) = {
+	&inbuilt_cd,
+	&inbuilt_help,
+	&inbuilt_exit
+};
+
 /**
  * main - Main Entry
+ * @ac: argument count
+ * @av: argument vector
  *
  * Return: Always 0 (Success)
  */
 
-int main(void)
+int main(__attribute__((unused))int ac, __attribute__((unused))char **av)
 {
-	char *prompt = "$ ";
-	char **tokens, *args;
-	int execStatus;
-
-	do {
-		if (write(STDOUT_FILE, prompt, _strlen(prompt)) == -1)
-		{
-			exit(-1);
-		}
-		args = readLine();
-		tokens = tokenizer(args);
-		execStatus = execute(tokens);
-
-		free(tokens);
-		free(args);
-	} while (execStatus);
-	return (0);
+	promptLoop();
+	return (EXIT_SUCCESS);
 }
